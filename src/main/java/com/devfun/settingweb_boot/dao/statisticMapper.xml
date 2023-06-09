@@ -5,12 +5,28 @@
 
 <mapper
 	namespace="com.devfun.settingweb_boot.dao.StatisticMapper">
-
+	<!-- 연도별 접속자 수 -->
 	<select id="selectYearLogin" parameterType="string"
 		resultType="hashMap">
 		select count(*) as totCnt
 		from statistc.requestinfo ri
 		where left(ri.createDate, 2) = #{year};
+	</select>
+
+	<!-- 월별 접속자 수 -->
+	<select id="selectMonthLogin" parameterType="string"
+		resultType="hashMap">
+		SELECT COUNT(*) AS monthlyUsers
+		FROM statistc.requestInfo ri
+		WHERE LEFT(ri.createDate, 4) = #{yearMonth};
+	</select>
+
+	<!-- 일별 접속자 수 -->
+	<select id="selectDayLogin" parameterType="string"
+		resultType="hashMap">
+		SELECT COUNT(*) AS dailyUsers
+		FROM statistc.requestInfo ri
+		WHERE LEFT(ri.createDate, 6) = #{daily};
 	</select>
 
 </mapper>

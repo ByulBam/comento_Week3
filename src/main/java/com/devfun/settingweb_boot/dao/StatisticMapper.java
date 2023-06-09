@@ -5,4 +5,5 @@ public interface  StatisticMapper {
 	public HashMap<String, Object> selectYearLogin(String year);
 	public HashMap<String, Object> selectMonthLogin(String yearMonth);
 	public HashMap<String, Object> selectDayLogin(String daily);
+	
 }

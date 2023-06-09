@@ -28,5 +28,6 @@
 		FROM statistc.requestInfo ri
 		WHERE LEFT(ri.createDate, 6) = #{daily};
 	</select>
+	
 
 </mapper>

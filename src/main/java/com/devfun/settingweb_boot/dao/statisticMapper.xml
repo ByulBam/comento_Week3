@@ -10,7 +10,8 @@
 		resultType="hashMap">
 		select count(*) as totCnt
 		from statistc.requestinfo ri
-		where left(ri.createDate, 2) = #{year};
+		where
+		left(ri.createDate, 2) = #{year};
 	</select>
 
 	<!-- 월별 접속자 수 -->
@@ -28,6 +29,14 @@
 		FROM statistc.requestInfo ri
 		WHERE LEFT(ri.createDate, 6) = #{daily};
 	</select>
-	
+
+	<!-- 평균 하루 로그인 수 -->
+	<select id="averageLogin" parameterType="string"
+		resultType="hashMap">
+		SELECT COUNT(*) / COUNT(DISTINCT ri.createDate) AS averageLoginCount
+		FROM statistic.requestInfo ri;
+
+	</select>
+
 
 </mapper>
